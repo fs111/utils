@@ -3,3 +3,4 @@
 # make; alert make is done
 # for gnome use zenity and for pure X use xmessage -nearmouse
 kdialog --msgbox "$*"
+#kdialog --passivepopup "$*" # for using the new notification stuff
