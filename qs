@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 << DOC
 simple bash script that starts a lighttpd in the given directory in the
