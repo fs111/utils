@@ -3,5 +3,13 @@
 # script to shorten a url on the commandline with kurz.go
 # (http://github.com/fs111/kurz.go). Uses http auth via .netrc
 #
-# 
+#
+
+if [ $1 == "-i" ]
+then
+    curl s.kel.pe/$2+
+    exit
+fi
+
 curl -n -k --data-urlencode "url=$1" https://s.kel.pe:442/shorten/
+
