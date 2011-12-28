@@ -11,5 +11,5 @@ then
     exit
 fi
 
-curl -n -k --data-urlencode "url=$1" https://s.kel.pe:442/shorten/
+curl -L -n -k --data-urlencode "url=$1" https://s.kel.pe:442/shorten/
 
