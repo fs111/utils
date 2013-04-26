@@ -109,6 +109,6 @@ do
     echo http://${ip}:${PORT}/
 done
 echo "---------------------------------------"
-/sbin/lighttpd -D -f $TMPCONF > /dev/null # enjoy the silence :)
+/usr/sbin/lighttpd -D -f $TMPCONF > /dev/null # enjoy the silence :)
 
 rm $TMPCONF
