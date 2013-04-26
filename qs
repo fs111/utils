@@ -104,11 +104,11 @@ EOC
 echo "starting lighttpd at 0.0.0.0:${PORT}. use ctrl-c to stop."
 echo "your URLs are"
 LANG=C
-for ip in $( ifconfig | grep "inet addr" | awk -F: '{print $2}' | awk '{print $1}')
+for ip in $( /sbin/ifconfig | grep "inet addr" | awk -F: '{print $2}' | awk '{print $1}')
 do
     echo http://${ip}:${PORT}/
 done
 echo "---------------------------------------"
-lighttpd -D -f $TMPCONF > /dev/null # enjoy the silence :)
+/sbin/lighttpd -D -f $TMPCONF > /dev/null # enjoy the silence :)
 
 rm $TMPCONF
