@@ -1,0 +1,18 @@
+#!/bin/bash
+ 
+# command line search script for nexus instances. Needs curl and xmlstarlet
+# installed.
+ 
+NEXUS_URL="http://search.maven.org/solrsearch/select/?wt=xml&rows=20&q="
+ 
+# make sure we got exactly one param
+if [ ! $# -eq 1 ]
+then
+echo "usage $0 <term>"
+exit 1
+fi
+ 
+curl -s $NEXUS_URL$1 | xmlstarlet sel -T -t -m /response/result/doc \
+-v "str[@name='g']" -o " " \
+-v "str[@name='a']" -o " " \
+-v "str[@name='latestVersion']" -n
