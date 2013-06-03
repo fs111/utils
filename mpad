@@ -1,0 +1,17 @@
+#!/bin/sh
+
+ENABLED_PROPERTY='121'
+MPAD_ID=`xinput list | grep 'PS/2 Generic Mouse' | perl -pe 's/.*id=(\d+).*/$1/'`
+
+case $1 in
+    "on")
+        xinput set-prop $MPAD_ID $ENABLED_PROPERTY 1
+    ;;
+    "off")
+        xinput set-prop $MPAD_ID $ENABLED_PROPERTY 0
+    ;;    
+    *)  
+        echo 'usage: mpad on|off'
+        exit 1
+    ;;
+esac

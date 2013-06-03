@@ -41,7 +41,7 @@ server.port = ${PORT}
 dir-listing.activate = "enable"
 dir-listing.encoding  = "utf-8"
 dir-listing.hide-dotfiles = "enable"
-#ugly, ugly, but we want to server some mime types...
+#ugly, ugly, but we want to serve some mime types...
 mimetype.assign             = (
   ".rpm"          =>      "application/x-rpm",
   ".pdf"          =>      "application/pdf",
@@ -102,6 +102,13 @@ mimetype.assign             = (
 EOC
 
 echo "starting lighttpd at 0.0.0.0:${PORT}. use ctrl-c to stop."
-lighttpd -D -f $TMPCONF > /dev/null # enjoy the silence :)
+echo "your URLs are"
+LANG=C
+for ip in $( /sbin/ifconfig | grep "inet addr" | awk -F: '{print $2}' | awk '{print $1}')
+do
+    echo http://${ip}:${PORT}/
+done
+echo "---------------------------------------"
+/usr/sbin/lighttpd -D -f $TMPCONF > /dev/null # enjoy the silence :)
 
 rm $TMPCONF
