@@ -1,8 +1,9 @@
 #!/bin/bash
  
-# command line search script for nexus instances. Needs curl and xmlstarlet
+# command line search script for maven central. Needs curl and xmlstarlet
 # installed.
- 
+
+# this looks like it is just solr, so more parameters can be added if needed
 NEXUS_URL="http://search.maven.org/solrsearch/select/?wt=xml&rows=20&q="
  
 # make sure we got exactly one param
